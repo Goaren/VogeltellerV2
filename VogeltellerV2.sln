@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VogeltellerV2", "VogeltellerV2\VogeltellerV2.csproj", "{AC4FA282-F8D6-433B-BAC5-677E6F68B2F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalayer", "Datalayer\Datalayer.csproj", "{F65358DA-5257-438B-9E20-025C58A5DF2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{DFB4D735-76B9-437C-9E24-627468FBDEE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AC4FA282-F8D6-433B-BAC5-677E6F68B2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC4FA282-F8D6-433B-BAC5-677E6F68B2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC4FA282-F8D6-433B-BAC5-677E6F68B2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F65358DA-5257-438B-9E20-025C58A5DF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65358DA-5257-438B-9E20-025C58A5DF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65358DA-5257-438B-9E20-025C58A5DF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65358DA-5257-438B-9E20-025C58A5DF2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFB4D735-76B9-437C-9E24-627468FBDEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB4D735-76B9-437C-9E24-627468FBDEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB4D735-76B9-437C-9E24-627468FBDEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB4D735-76B9-437C-9E24-627468FBDEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
