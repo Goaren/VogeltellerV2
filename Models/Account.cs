@@ -13,6 +13,7 @@ namespace Models.Models
         private string voornaam;
         private string achternaam;
         private string wachtwoord;
+        private bool isAdmin;
         private List<Waarneming> waarnemingen = new List<Waarneming>();
 
         public int Id { get { return id; } set { id = value; } }
@@ -20,14 +21,15 @@ namespace Models.Models
         public string Voornaam { get { return voornaam; } set { voornaam = value; } }
         public string Achternaam { get { return achternaam; } set { achternaam = value; } }
         public string Wachtwoord { get { return wachtwoord; } set { wachtwoord = value; } }
-
-        public Account(int id, string email, string voornaam, string achternaam, string wachtwoord)
+        public bool IsAdmin { get { return isAdmin; } set { isAdmin = value; } }
+        public Account(int id, string email, string voornaam, string achternaam, string wachtwoord, bool isAdmin)
         {
             this.id = id;
             this.email = email;
             this.voornaam = voornaam;
             this.achternaam = achternaam;
             this.wachtwoord = wachtwoord;
+            this.isAdmin = isAdmin;
         }
 
         public void MakeWaarneming(Waarneming waarneming)

@@ -41,10 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IAccountContext.cs" />
+    <Compile Include="Interfaces\IGebiedContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\GebiedRepository.cs" />
     <Compile Include="SQLContext\AccountSQLContext.cs" />
     <Compile Include="SQLContext\DatabaseConnection.cs" />
+    <Compile Include="SQLContext\GebiedSQLContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

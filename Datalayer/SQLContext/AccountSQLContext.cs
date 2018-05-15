@@ -21,7 +21,7 @@ namespace Datalayer.SQLContext
 
             if (conState == ConnectionState.Open)
             {
-                string query = "SELECT * FROM ACCOUNT WHERE Email=@email and Wachtwoord=@wachtwoord";
+                string query = "SELECT * FROM ACCOUNT WHERE Email = @email and Wachtwoord = @wachtwoord";
                 using (connection)
                 {
                     SqlCommand cmd = new SqlCommand(query, connection);
@@ -48,7 +48,8 @@ namespace Datalayer.SQLContext
                  Convert.ToString(reader["Email"]),
                  Convert.ToString(reader["Voornaam"]),
                  Convert.ToString(reader["Achternaam"]),
-                 Convert.ToString(reader["Wachtwoord"]));
+                 Convert.ToString(reader["Wachtwoord"]),
+                 Convert.ToBoolean(reader["IsAdmin"]));
         }
     }
 }

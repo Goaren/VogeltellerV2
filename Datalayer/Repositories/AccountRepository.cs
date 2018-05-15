@@ -16,9 +16,9 @@ namespace Datalayer.Repositories
         {
             this.context = context;
         }
-        public Account Login(string username, string password)
+        public Account Login(string email, string password)
         {
-            return context.Login(username, password);
+            return context.Login(email, password);
         }
     }
 }
