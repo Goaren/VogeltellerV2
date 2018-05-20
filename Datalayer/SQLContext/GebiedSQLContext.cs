@@ -10,7 +10,7 @@ using Datalayer.Interfaces;
 namespace Datalayer.SQLContext
 {
     public class GebiedSQLContext : IGebiedContext
-    {
+    { 
         Gebied gebied;
         public Gebied GetGebiedById(int id)
         {
