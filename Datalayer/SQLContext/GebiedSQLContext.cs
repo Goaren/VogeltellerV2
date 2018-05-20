@@ -5,12 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Models.Models;
+using Datalayer.Interfaces;
 
 namespace Datalayer.SQLContext
 {
-    public class GebiedSQLContext
+    public class GebiedSQLContext : IGebiedContext
     {
         Gebied gebied;
+        public Gebied GetGebiedById(int id)
+        {
+            using(SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "SELECT * FROM Gebied WHERE ID = @id";
+
+                using(SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using(SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            gebied = CreateGebiedFromReader(dr);
+                        }
+                    }
+                }
+            }
+            return gebied;
+        }
 
         public List<Gebied> GetAllGebieden()
         {

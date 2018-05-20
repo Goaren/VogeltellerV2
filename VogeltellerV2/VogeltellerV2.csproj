@@ -196,7 +196,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\LoginLayout.cshtml" />
-    <Content Include="Views\Gebied\Index.cshtml" />
+    <Content Include="Views\Gebied\GebiedList.cshtml" />
+    <Content Include="Views\Gebied\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

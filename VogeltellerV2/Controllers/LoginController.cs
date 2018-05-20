@@ -34,7 +34,7 @@ namespace VogeltellerV2.Controllers
                 //Hier kan je variabelen aanmaken om een loggedinuser naar andere pagina's te sturen
                 if (loggedInUser.IsAdmin == false)
                 {
-                    return RedirectToAction("Index", "Gebied");
+                    return RedirectToAction("GebiedList", "Gebied");
                 }
                 else if (loggedInUser.IsAdmin == true)
                 {
