@@ -48,6 +48,7 @@
     <Compile Include="SQLContext\AccountSQLContext.cs" />
     <Compile Include="SQLContext\DatabaseConnection.cs" />
     <Compile Include="SQLContext\GebiedSQLContext.cs" />
+    <Compile Include="SQLContext\WaarnemingSQL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

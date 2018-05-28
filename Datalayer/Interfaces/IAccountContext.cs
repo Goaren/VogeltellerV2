@@ -9,6 +9,7 @@ namespace Datalayer.Interfaces
 {
     public interface IAccountContext
     {
+        Account InsertAccount(Account account);
         Account Login(string email, string password);
     }
 }

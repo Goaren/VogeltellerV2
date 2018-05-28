@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Models.Models
@@ -28,6 +30,7 @@ namespace Models.Models
 
         public Waarneming(int id, double x, double y, DateTime date, int accountId, int gebiedId, int dierId, int soortWaarnemingId)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             this.id = id;
             this.x = x;
             this.y = y;

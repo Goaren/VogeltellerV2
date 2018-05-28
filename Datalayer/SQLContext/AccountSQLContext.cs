@@ -12,6 +12,31 @@ namespace Datalayer.SQLContext
 {
     public class AccountSQLContext : IAccountContext
     {
+        public Account InsertAccount(Account account)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "INSERT INTO ACCOUNT (Email, Voornaam, Achternaam, Wachtwoord, IsAdmin)" +
+                    "VALUES (@email, @voornaam, @achternaam, @wachtwoord, @isadmin)";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("@email", account.Email);
+                    command.Parameters.AddWithValue("@voornaam", account.Voornaam);
+                    command.Parameters.AddWithValue("@achternaam", account.Achternaam);
+                    command.Parameters.AddWithValue("@wachtwoord", account.Wachtwoord);
+                    command.Parameters.AddWithValue("@isadmin", account.IsAdmin);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+
+                    }
+                }
+                return account;
+            }
+        }
         public Account Login(string email, string wachtwoord)
         {
             SqlConnection connection = DatabaseConnection.Connection;
