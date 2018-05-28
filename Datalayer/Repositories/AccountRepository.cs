@@ -12,7 +12,7 @@ namespace Datalayer.Repositories
     {
         private IAccountContext context;
 
-        public Account AccountRepository(Account account)
+        public Account InsertAccount(Account account)
         {
             return context.InsertAccount(account);
         }
