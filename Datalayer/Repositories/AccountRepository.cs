@@ -12,14 +12,13 @@ namespace Datalayer.Repositories
     {
         private IAccountContext context;
 
-        public Account InsertAccount(Account account)
-        {
-            return context.InsertAccount(account);
-        }
-
         public AccountRepository(IAccountContext context)
         {
             this.context = context;
+        }
+        public Account InsertAccount(Account account)
+        {
+            return context.InsertAccount(account);
         }
         public Account Login(string email, string password)
         {

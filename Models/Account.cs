@@ -32,6 +32,11 @@ namespace Models.Models
             this.isAdmin = isAdmin;
         }
 
+        public Account(string email, string voornaam, string achternaam, string wachtwoord, bool isAdmin)
+        {
+
+        }
+
         public void MakeWaarneming(Waarneming waarneming)
         {
             waarnemingen.Add(waarneming);
