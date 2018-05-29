@@ -38,7 +38,7 @@ namespace VogeltellerV2.Controllers
                 }
                 else if (loggedInUser.IsAdmin == true)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
                 else
                 {
