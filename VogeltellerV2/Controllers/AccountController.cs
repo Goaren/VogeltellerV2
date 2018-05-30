@@ -19,6 +19,8 @@ namespace VogeltellerV2.Controllers
         {
             return View();
         }
+
+        [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try

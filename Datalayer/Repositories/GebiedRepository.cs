@@ -24,5 +24,17 @@ namespace Datalayer.Repositories
         {
             return context.GetAllGebieden();
         }
+        public Gebied CreateGebied(Gebied gebied)
+        {
+            return context.CreateGebied(gebied);
+        }
+        public bool UpdateGebied(Gebied gebied)
+        {
+            return context.UpdateGebied(gebied);
+        }
+        public bool DeleteGebied(int id)
+        {
+            return context.DeleteGebied(id);
+        }
     }
 }

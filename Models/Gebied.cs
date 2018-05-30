@@ -31,5 +31,9 @@ namespace Models.Models
             this.y = y;
             this.zoom = zoom;
         }
+        public Gebied(string naam, double x, double y, int zoom)
+        {
+
+        }
     }
 }

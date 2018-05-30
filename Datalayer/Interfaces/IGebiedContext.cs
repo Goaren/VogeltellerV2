@@ -11,5 +11,8 @@ namespace Datalayer.Interfaces
     {
         Gebied GetGebiedById(int id);
         List<Gebied> GetAllGebieden();
+        Gebied CreateGebied(Gebied gebied);
+        bool UpdateGebied(Gebied gebied);
+        bool DeleteGebied(int id);
     }   
 }

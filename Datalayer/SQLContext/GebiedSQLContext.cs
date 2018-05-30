@@ -51,6 +51,79 @@ namespace Datalayer.SQLContext
             }
             return GebiedList;
         }
+        public Gebied CreateGebied(Gebied gebied)
+        {
+            using(SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "INSERT INTO Gebied (Naam, X, Y, Zoom)" +
+                    "VALUES (@naam, @x, @y, @zoom)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@naam", gebied.Naam);
+                    cmd.Parameters.AddWithValue("@x", gebied.X);
+                    cmd.Parameters.AddWithValue("@y", gebied.Y);
+                    cmd.Parameters.AddWithValue("@zoom", gebied.Zoom);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch(SqlException e)
+                    {
+
+                    }
+                }
+                return gebied;
+            }
+        }
+        public bool UpdateGebied(Gebied gebied)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "UPDATE Gebied" +
+                    " SET Naam=@naam, X=@x, Y=@y, Zoom=@zoom" +
+                    " WHERE ID=@id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", gebied.Id);
+                    cmd.Parameters.AddWithValue("@naam", gebied.Naam);
+                    cmd.Parameters.AddWithValue("@x", gebied.X);
+                    cmd.Parameters.AddWithValue("@y", gebied.Y);
+                    cmd.Parameters.AddWithValue("@zoom", gebied.Zoom);
+
+                    try
+                    {
+                        if (Convert.ToInt32(cmd.ExecuteNonQuery()) > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+
+                    }
+
+                }
+            }
+
+            return false;
+        }
+        public bool DeleteGebied(int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "DELETE FROM Gebied WHERE ID=@id";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("id", id);
+                    if (Convert.ToInt32(command.ExecuteNonQuery()) == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
         public Gebied CreateGebiedFromReader(SqlDataReader dr)
         {
             Gebied g = new Gebied(

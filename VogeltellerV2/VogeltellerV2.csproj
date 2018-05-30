@@ -204,6 +204,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Gebied\Index.cshtml" />
     <Content Include="Views\Gebied\Details.cshtml" />
+    <Content Include="Views\Gebied\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
