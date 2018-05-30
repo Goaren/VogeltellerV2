@@ -24,6 +24,21 @@ namespace VogeltellerV2.Controllers
             List<Gebied> Gebieden = gr.GetAllGebieden();
             return View(Gebieden);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Gebied gebied)
+        {
+            if (ModelState.IsValid)
+            {
+                gr.CreateGebied(gebied);
+                return RedirectToAction("Index", "Gebied");
+            }
+            return View();
+        }
         public ActionResult Edit(int id)
         {
             Gebied gebied = gr.GetGebiedById(id);
@@ -35,18 +50,14 @@ namespace VogeltellerV2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Gebied gebied)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Gebied gebied = new Gebied(collection["Naam"], Convert.ToDouble(collection["X"]), Convert.ToDouble(collection["Y"]), Convert.ToInt32(collection["Zoom"]));
                 gr.UpdateGebied(gebied);
-                return RedirectToAction("Index");
+                return RedirectToAction("index", "Gebied");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
         public ActionResult Details(int id)
         {

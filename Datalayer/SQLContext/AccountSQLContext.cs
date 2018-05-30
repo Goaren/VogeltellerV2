@@ -16,8 +16,7 @@ namespace Datalayer.SQLContext
         {
             using (SqlConnection conn = DatabaseConnection.Connection)
             {
-                string query = "INSERT INTO ACCOUNT (Email, Voornaam, Achternaam, Wachtwoord, IsAdmin)" +
-                    "VALUES (@email, @voornaam, @achternaam, @wachtwoord, @isadmin)";
+                string query = "INSERT INTO ACCOUNT (Email, Voornaam, Achternaam, Wachtwoord, IsAdmin) VALUES (@email, @voornaam, @achternaam, @wachtwoord, @isadmin)";
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@email", account.Email);

@@ -21,18 +21,25 @@ namespace VogeltellerV2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Account account)
         {
-            try
+            if (ModelState.IsValid)
             {
-                Account account = new Account(collection["Email"], collection["Voornaam"], collection["Achternaam"], collection["Wachtwoord"], Convert.ToBoolean(collection["IsAdmin"]));
                 ar.InsertAccount(account);
                 return RedirectToAction("Index", "Login");
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+
+            //try
+            //{
+            //    Account account = new Account(collection["Email"], collection["Voornaam"], collection["Achternaam"], collection["Wachtwoord"], Convert.ToBoolean(collection["IsAdmin"]));
+            //    ar.InsertAccount(account);
+            //    return RedirectToAction("Index", "Login");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
     }
 }
