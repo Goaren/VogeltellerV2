@@ -69,6 +69,30 @@ namespace VogeltellerV2.Controllers
             else return HttpNotFound();
         }
 
+        public ActionResult Delete(int id)
+        {
+            Gebied gebied = gr.GetGebiedById(id);
+            if (gebied != null)
+            {
+                return View(gebied);
+            }
+            else return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, Gebied gebied)
+        {
+            try
+            {
+                gr.DeleteGebied(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         public ActionResult Map(int id)
         {
             Gebied gebied = gr.GetGebiedById(id);

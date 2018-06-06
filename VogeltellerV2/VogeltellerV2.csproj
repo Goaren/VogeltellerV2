@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BezoekController.cs" />
     <Compile Include="Controllers\GebiedController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -207,6 +208,8 @@
     <Content Include="Views\Gebied\Edit.cshtml" />
     <Content Include="Views\Gebied\Create.cshtml" />
     <Content Include="Views\Gebied\Delete.cshtml" />
+    <Content Include="Views\Bezoek\Index.cshtml" />
+    <Content Include="Views\Shared\Teller_Layout .cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

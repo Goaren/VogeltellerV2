@@ -42,14 +42,17 @@
   <ItemGroup>
     <Compile Include="Interfaces\IAccountContext.cs" />
     <Compile Include="Interfaces\IBezoekContext.cs" />
+    <Compile Include="Interfaces\IDierContext.cs" />
     <Compile Include="Interfaces\IGebiedContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\BezoekRepository.cs" />
+    <Compile Include="Repositories\DierRepository.cs" />
     <Compile Include="Repositories\GebiedRepository.cs" />
     <Compile Include="SQLContext\AccountSQLContext.cs" />
     <Compile Include="SQLContext\BezoekSQLContext.cs" />
     <Compile Include="SQLContext\DatabaseConnection.cs" />
+    <Compile Include="SQLContext\DierSQLContext.cs" />
     <Compile Include="SQLContext\GebiedSQLContext.cs" />
     <Compile Include="SQLContext\WaarnemingSQL.cs" />
   </ItemGroup>

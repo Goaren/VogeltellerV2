@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Models;
+using Datalayer.Interfaces;
 
-namespace Datalayer.Interfaces
+namespace Datalayer.Repositories
 {
-    public interface IBezoekContext
+    public class DierRepository
     {
-        List<Bezoek> GetAllBezoeken();
+        private IDierContext context;
+
     }
 }

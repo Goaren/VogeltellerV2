@@ -9,7 +9,35 @@ using Models.Models;
 
 namespace Datalayer.SQLContext
 {
-    class BezoekSQLContext
+    public class BezoekSQLContext : IBezoekContext
     {
+
+        public List<Bezoek> GetAllBezoeken()
+        {
+            string query = "SELECT * FROM Bezoek";
+            List<Bezoek> BezoekList = new List<Bezoek>();
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        BezoekList.Add(CreateBezoekFromReader(dr));
+                    }
+                }
+                DatabaseConnection.Connection.Close();
+            }
+            return BezoekList;
+        }
+        private Bezoek CreateBezoekFromReader(SqlDataReader reader)
+        {
+            return new Bezoek(
+                 Convert.ToInt32(reader["ID"]),
+                 Convert.ToDateTime(reader["Start"]),
+                 Convert.ToDateTime(reader["Einde"]),
+                 Convert.ToInt32(reader["AccountID"]),
+                 Convert.ToInt32(reader["GebiedID"]));
+        }
     }
 }

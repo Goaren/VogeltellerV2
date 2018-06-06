@@ -8,7 +8,17 @@ using Datalayer.Interfaces;
 
 namespace Datalayer.Repositories
 {
-    class BezoekRepository
+    public class BezoekRepository
     {
+        private IBezoekContext context;
+
+        public BezoekRepository(IBezoekContext context)
+        {
+            this.context = context;
+        }
+        public List<Bezoek> GetAllBezoeken()
+        {
+            return context.GetAllBezoeken();
+        }
     }
 }

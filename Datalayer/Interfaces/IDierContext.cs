@@ -7,8 +7,7 @@ using Models.Models;
 
 namespace Datalayer.Interfaces
 {
-    public interface IBezoekContext
+    public interface IDierContext
     {
-        List<Bezoek> GetAllBezoeken();
     }
 }

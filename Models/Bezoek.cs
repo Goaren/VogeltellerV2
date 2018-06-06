@@ -21,12 +21,18 @@ namespace Models.Models
         public int AccountId { get { return accountId; } set { accountId = value; } }
         public int GebiedId { get { return gebiedId; } set { gebiedId = value; } }
 
-        public Bezoek(int id, DateTime start, int accountId, int gebiedId)
+        public Bezoek(int id, DateTime start, DateTime einde, int accountId, int gebiedId)
         {
             this.id = id;
             this.start = start;
+            this.einde = einde;
             this.accountId = accountId;
             this.gebiedId = gebiedId;
+        }
+
+        public Bezoek()
+        {
+
         }
 
 
