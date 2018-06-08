@@ -40,5 +40,9 @@ namespace Models.Models
             this.dierId = dierId;
             this.soortWaarnemingId = soortWaarnemingId;
         }
+        public Waarneming()
+        {
+
+        }
     }
 }

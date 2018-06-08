@@ -19,6 +19,10 @@ namespace Models.Models
             this.id = id;
             this.naam = naam;
         }
+        public Dier()
+        {
+
+        }
 
 
     }

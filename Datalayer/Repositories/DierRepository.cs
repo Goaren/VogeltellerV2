@@ -12,5 +12,13 @@ namespace Datalayer.Repositories
     {
         private IDierContext context;
 
+        public DierRepository(IDierContext context)
+        {
+            this.context = context;
+        }
+        public List<Dier> GetAllDieren()
+        {
+            return context.GetAllDieren();
+        }
     }
 }

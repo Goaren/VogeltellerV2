@@ -9,11 +9,12 @@ using Datalayer.Interfaces;
 
 namespace Datalayer.SQLContext
 {
-    public class DierSQLContext
+    public class DierSQLContext : IDierContext
     {
+        Dier dier;
         public List<Dier> GetAllDieren()
         {
-            string query = "Select v.Naam From Vogel v union select z.Naam from Zoogdier z";
+            string query = "Select v.ID, v.Naam From Vogel v union select z.ID, z.Naam from Zoogdier z";
             List<Dier> DierList = new List<Dier>();
             using (SqlConnection conn = DatabaseConnection.Connection)
             {
@@ -23,6 +24,7 @@ namespace Datalayer.SQLContext
                     while (dr.Read())
                     {
                         DierList.Add(CreateDierFromReader(dr));
+                       
                     }
                 }
                 DatabaseConnection.Connection.Close();
@@ -31,10 +33,9 @@ namespace Datalayer.SQLContext
         }
         public Dier CreateDierFromReader(SqlDataReader dr)
         {
-            Dier d = new Dier(
+            return new Dier(
                 Convert.ToInt32(dr["ID"]),
                 Convert.ToString(dr["Naam"]));
-            return d;
         }
         public Zoogdier CreateZoogdierFromReader(SqlDataReader dr)
         {

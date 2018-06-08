@@ -9,5 +9,6 @@ namespace Datalayer.Interfaces
 {
     public interface IDierContext
     {
+        List<Dier> GetAllDieren();
     }
 }
