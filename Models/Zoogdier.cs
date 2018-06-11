@@ -18,5 +18,9 @@ namespace Models.Models
             this.Naam = naam;
             this.familie = familie;
         }
+        public Zoogdier()
+        {
+
+        }
     }
 }

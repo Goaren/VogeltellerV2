@@ -13,10 +13,50 @@ namespace VogeltellerV2.Controllers
     {
         DierRepository dr = new DierRepository(new DierSQLContext());
         // GET: Dier
-        public ActionResult Index()
+        public ActionResult VogelIndex()
         {
-            List<Dier> Dieren = dr.GetAllDieren();
+            List<Vogel> Dieren = dr.GetAllVogels();
             return View(Dieren);
+        }
+        public ActionResult ZoogdierIndex()
+        {
+            List<Zoogdier> Dieren = dr.GetAllZoogdieren();
+            return View(Dieren);
+        }
+        public ActionResult DierKeuze()
+        {
+            return View();
+        }
+
+        public ActionResult CreateVogel()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateVogel(Vogel vogel)
+        {
+            if (ModelState.IsValid)
+            {
+                dr.CreateVogel(vogel);
+                return RedirectToAction("VogelIndex", "Dier");
+            }
+            return View();
+
+        }
+        public ActionResult CreateZoogdier()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateZoogdier(Zoogdier zoogdier)
+        {
+            if (ModelState.IsValid)
+            {
+                dr.CreateZoogdier(zoogdier);
+                return RedirectToAction("ZoogdierIndex", "Dier");
+            }
+            return View();
+
         }
     }
 }

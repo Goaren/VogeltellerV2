@@ -211,7 +211,15 @@
     <Content Include="Views\Gebied\Create.cshtml" />
     <Content Include="Views\Gebied\Delete.cshtml" />
     <Content Include="Views\Bezoek\Index.cshtml" />
-    <Content Include="Views\Dier\Index.cshtml" />
+    <Content Include="Views\Dier\DierKeuze.cshtml" />
+    <Content Include="Views\Dier\CreateVogel.cshtml" />
+    <Content Include="Views\Dier\CreateZoogdier.cshtml" />
+    <Content Include="Views\Dier\VogelIndex.cshtml" />
+    <Content Include="Views\Dier\ZoogdierIndex.cshtml" />
+    <Content Include="Views\Dier\EditVogel.cshtml" />
+    <Content Include="Views\Dier\EditZoogdier.cshtml" />
+    <Content Include="Views\Dier\DeleteVogel.cshtml" />
+    <Content Include="Views\Dier\DeleteZoogdier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

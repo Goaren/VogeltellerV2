@@ -9,6 +9,9 @@ namespace Datalayer.Interfaces
 {
     public interface IDierContext
     {
-        List<Dier> GetAllDieren();
+        List<Vogel> GetAllVogels();
+        List<Zoogdier> GetAllZoogdieren();
+        Vogel CreateVogel(Vogel vogel);
+        Zoogdier CreateZoogdier(Zoogdier zoogdier);
     }
 }

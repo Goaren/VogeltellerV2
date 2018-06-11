@@ -16,9 +16,21 @@ namespace Datalayer.Repositories
         {
             this.context = context;
         }
-        public List<Dier> GetAllDieren()
+        public List<Vogel> GetAllVogels()
         {
-            return context.GetAllDieren();
+            return context.GetAllVogels();
+        }
+        public List<Zoogdier> GetAllZoogdieren()
+        {
+            return context.GetAllZoogdieren();
+        }
+        public Vogel CreateVogel(Vogel vogel)
+        {
+            return context.CreateVogel(vogel);
+        }
+        public Zoogdier CreateZoogdier(Zoogdier zoogdier)
+        {
+            return context.CreateZoogdier(zoogdier);
         }
     }
 }

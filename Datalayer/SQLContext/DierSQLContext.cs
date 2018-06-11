@@ -11,11 +11,11 @@ namespace Datalayer.SQLContext
 {
     public class DierSQLContext : IDierContext
     {
-        Dier dier;
-        public List<Dier> GetAllDieren()
+
+        public List<Vogel> GetAllVogels()
         {
-            string query = "Select v.ID, v.Naam From Vogel v union select z.ID, z.Naam from Zoogdier z";
-            List<Dier> DierList = new List<Dier>();
+            string query = "Select * From Vogel";
+            List<Vogel> DierList = new List<Vogel>();
             using (SqlConnection conn = DatabaseConnection.Connection)
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -23,7 +23,7 @@ namespace Datalayer.SQLContext
                 {
                     while (dr.Read())
                     {
-                        DierList.Add(CreateDierFromReader(dr));
+                        DierList.Add(CreateVogelFromReader(dr));
                        
                     }
                 }
@@ -31,11 +31,70 @@ namespace Datalayer.SQLContext
             }
             return DierList;
         }
-        public Dier CreateDierFromReader(SqlDataReader dr)
+        public List<Zoogdier> GetAllZoogdieren()
         {
-            return new Dier(
-                Convert.ToInt32(dr["ID"]),
-                Convert.ToString(dr["Naam"]));
+            string query = "Select * From Zoogdier";
+            List<Zoogdier> DierList = new List<Zoogdier>();
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DierList.Add(CreateZoogdierFromReader(dr));
+
+                    }
+                }
+                DatabaseConnection.Connection.Close();
+            }
+            return DierList;
+        }
+        public Vogel CreateVogel(Vogel vogel)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "INSERT INTO Vogel (Naam, BroedPeriodeStart, BroedPeriodeEinde, Broedpaar)" +
+                    "VALUES (@naam, @broedperiodestart, @broedperiodeeinde, @broedpaar)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@naam", vogel.Naam);
+                    cmd.Parameters.AddWithValue("@broedperiodestart", vogel.BroedperiodeStart);
+                    cmd.Parameters.AddWithValue("@broedperiodeeinde", vogel.BroedperiodeEinde);
+                    cmd.Parameters.AddWithValue("@broedpaar", vogel.Broedpaar);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+
+                    }
+                }
+                return vogel;
+            }
+        }
+        public Zoogdier CreateZoogdier(Zoogdier zoogdier)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "INSERT INTO Zoogdier (Naam, Familie)" +
+                    "VALUES (@naam, @familie)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@naam", zoogdier.Naam);
+                    cmd.Parameters.AddWithValue("@familie", zoogdier.Familie);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+
+                    }
+                }
+                return zoogdier;
+            }
         }
         public Zoogdier CreateZoogdierFromReader(SqlDataReader dr)
         {
@@ -50,7 +109,7 @@ namespace Datalayer.SQLContext
             Vogel v = new Vogel(
                 Convert.ToInt32(dr["ID"]),
                 Convert.ToString(dr["Naam"]),
-                Convert.ToDateTime(dr["BroedPeriodeBegin"]),
+                Convert.ToDateTime(dr["BroedPeriodeStart"]),
                 Convert.ToDateTime(dr["BroedPeriodeEind"]),
                 Convert.ToInt32(dr["Broedpaar"]));
             return v;

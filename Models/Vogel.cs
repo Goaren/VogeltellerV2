@@ -24,5 +24,9 @@ namespace Models.Models
             this.broedperiodeeinde = broedperiodeeinde;
             this.broedpaar = broedpaar;
         }
+        public Vogel()
+        {
+
+        }
     }
 }

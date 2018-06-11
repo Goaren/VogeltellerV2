@@ -1,19 +1,22 @@
-﻿@model IEnumerable<Models.Models.Dier>
+﻿@model IEnumerable<Models.Models.Zoogdier>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ZoogdierIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>ZoogdierIndex</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateZoogdier")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Familie)
         </th>
         <th></th>
     </tr>
@@ -22,6 +25,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Familie)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
