@@ -11,6 +11,48 @@ namespace Datalayer.SQLContext
 {
     public class DierSQLContext : IDierContext
     {
+        Vogel vogel;
+        Zoogdier zoogdier;
+        public Vogel GetVogelById(int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "SELECT * FROM Vogel WHERE ID = @id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            vogel = CreateVogelFromReader(dr);
+                        }
+                    }
+                }
+            }
+            return vogel;
+        }
+        public Zoogdier GetZoogdierById(int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "SELECT * FROM Zoogdier WHERE ID = @id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            zoogdier = CreateZoogdierFromReader(dr);
+                        }
+                    }
+                }
+            }
+            return zoogdier;
+        }
 
         public List<Vogel> GetAllVogels()
         {
@@ -96,6 +138,93 @@ namespace Datalayer.SQLContext
                 return zoogdier;
             }
         }
+        public bool UpdateVogel(Vogel vogel)
+        {
+            using(SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "UPDATE Vogel Set Naam=@naam, BroedPeriodeStart=@broedperiodestart, BroedPeriodeEinde=@broedperiodeeinde, Broedpaar=@broedpaar WHERE ID=@id";
+                using(SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", vogel.Id);
+                    cmd.Parameters.AddWithValue("@naam", vogel.Naam);
+                    cmd.Parameters.AddWithValue("@broedperiodestart", vogel.BroedperiodeStart);
+                    cmd.Parameters.AddWithValue("@broedperiodeeinde", vogel.BroedperiodeEinde);
+                    cmd.Parameters.AddWithValue("@broedpaar", vogel.Broedpaar);
+                    try
+                    {
+                        if(Convert.ToInt32(cmd.ExecuteNonQuery()) > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    catch(Exception e)
+                    {
+
+                    }
+                }   
+            }
+            return false;
+        }
+        public bool UpdateZoogdier(Zoogdier zoogdier)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "UPDATE Zoogdier Set Naam=@naam, Familie=@familie WHERE ID=@id";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", zoogdier.Id);
+                    cmd.Parameters.AddWithValue("@naam", zoogdier.Naam);
+                    cmd.Parameters.AddWithValue("@familie", zoogdier.Familie);
+                    try
+                    {
+                        if (Convert.ToInt32(cmd.ExecuteNonQuery()) > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool DeleteVogel(int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "DELETE FROM Vogel WHERE ID=@id";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("id", id);
+                    if (Convert.ToInt32(command.ExecuteNonQuery()) == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        public bool DeleteZoogdier(int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.Connection)
+            {
+                string query = "DELETE FROM Zoogdier WHERE ID=@id";
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    command.Parameters.AddWithValue("id", id);
+                    if (Convert.ToInt32(command.ExecuteNonQuery()) == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
         public Zoogdier CreateZoogdierFromReader(SqlDataReader dr)
         {
             Zoogdier z = new Zoogdier(
@@ -110,7 +239,7 @@ namespace Datalayer.SQLContext
                 Convert.ToInt32(dr["ID"]),
                 Convert.ToString(dr["Naam"]),
                 Convert.ToDateTime(dr["BroedPeriodeStart"]),
-                Convert.ToDateTime(dr["BroedPeriodeEind"]),
+                Convert.ToDateTime(dr["BroedPeriodeEinde"]),
                 Convert.ToInt32(dr["Broedpaar"]));
             return v;
         }

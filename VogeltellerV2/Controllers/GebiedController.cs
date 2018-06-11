@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Models.Models;
 using Datalayer.Repositories;
 using Datalayer.SQLContext;
+using VogeltellerV2.Models;
+using System.Web.Script.Serialization;
 
 namespace VogeltellerV2.Controllers
 {
@@ -42,7 +44,7 @@ namespace VogeltellerV2.Controllers
         public ActionResult Edit(int id)
         {
             Gebied gebied = gr.GetGebiedById(id);
-            if(gebied != null)
+            if (gebied != null)
             {
                 return View(gebied);
             }
@@ -84,6 +86,7 @@ namespace VogeltellerV2.Controllers
         {
             try
             {
+
                 gr.DeleteGebied(id);
                 return RedirectToAction("Index");
             }
@@ -95,7 +98,9 @@ namespace VogeltellerV2.Controllers
 
         public ActionResult Map(int id)
         {
-            Gebied gebied = gr.GetGebiedById(id);
+            GebiedWaarnemingViewModel gebied = new GebiedWaarnemingViewModel(id);
+            var json = new JavaScriptSerializer().Serialize(gebied);
+            ViewBag.jsonObj = json;
             if (gebied != null)
             {
                 return View(gebied);

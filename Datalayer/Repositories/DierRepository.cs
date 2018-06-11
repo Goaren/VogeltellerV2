@@ -16,6 +16,14 @@ namespace Datalayer.Repositories
         {
             this.context = context;
         }
+        public Vogel GetVogelById(int id)
+        {
+            return context.GetVogelById(id);
+        }
+        public Zoogdier GetZoogdierById(int id)
+        {
+            return context.GetZoogdierById(id);
+        }
         public List<Vogel> GetAllVogels()
         {
             return context.GetAllVogels();
@@ -31,6 +39,22 @@ namespace Datalayer.Repositories
         public Zoogdier CreateZoogdier(Zoogdier zoogdier)
         {
             return context.CreateZoogdier(zoogdier);
+        }
+        public bool UpdateVogel(Vogel vogel)
+        {
+            return context.UpdateVogel(vogel);
+        }
+        public bool UpdateZoogdier(Zoogdier zoogdier)
+        {
+            return context.UpdateZoogdier(zoogdier);
+        }
+        public bool DeleteVogel(int id)
+        {
+            return context.DeleteVogel(id);
+        }
+        public bool DeleteZoogdier(int id)
+        {
+            return context.DeleteZoogdier(id);
         }
     }
 }

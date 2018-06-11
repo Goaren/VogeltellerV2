@@ -1,8 +1,11 @@
-﻿@model Models.Models.Gebied
+﻿@model VogeltellerV2.Models.GebiedWaarnemingViewModel
 
 @{
     ViewBag.Title = "Map";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var currentIndex = 0;
+    var jsstring = "";
+
 }
 
 <h2></h2>
@@ -12,41 +15,55 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Naam)
+            @Html.DisplayNameFor(model => model.gebied.Naam)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Naam)
+            @Html.DisplayFor(model => model.gebied.Naam)
         </dd>
     </dl>
     <style>
-       /* Always set the map height explicitly to define the size of the div
+        /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
-             #map {
-                 height: 750px;
-                 width: auto;
-             }
-             /* Optional: Makes the sample page fill the window. */
-             html, body {
-                 height: 100%;
-                 margin: 0;
-                 padding: 0;
-             }
+        #map {
+            height: 750px;
+            width: auto;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 
     <div class="row">
         <div id="map"></div>
+
+        @foreach(Models.Models.Waarneming o in Model.waarnemingen)
+        {
+            jsstring += "new google.maps.Marker({" +
+                     "position: { lat: " + o.X + ", lng: " + o.Y + " }," +
+                         "map: map," +
+                         "title: \"kill me\"" +
+                         "});";
+        }
         <script>
             var map;
-            var z = @Model.Zoom;
-      function initMap() {
-          map = new google.maps.Map(document.getElementById('map'), {
-              center: { lat: @Model.X, lng: @Model.Y}, zoom: z
-        });
-      }
+            var z = @Model.gebied.Zoom;
+            function initMap()
+            {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: @Model.gebied.X, lng: @Model.gebied.Y}, zoom: z
+                });
+                @Html.Raw(jsstring);
+            }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFgGEZE01x1CuwFW_H-KNplfqSw2gbX_4&center=x,y&zoom=zoom&callback=initMap"
                 async defer>
         </script>
     </div>
+    <p>
+        @Html.ActionLink("Voeg waarneming toe", "Create", "Waarneming")
+    </p>
 </div>

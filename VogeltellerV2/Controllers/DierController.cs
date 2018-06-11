@@ -58,5 +58,91 @@ namespace VogeltellerV2.Controllers
             return View();
 
         }
+        public ActionResult EditVogel(int id)
+        {
+            Vogel vogel = dr.GetVogelById(id);
+            if(vogel != null)
+            {
+                return View(vogel);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult EditVogel(Vogel vogel)
+        {
+            if (ModelState.IsValid)
+            {
+                dr.UpdateVogel(vogel);
+                return RedirectToAction("VogelIndex", "Dier");
+            }
+            return View();
+        }
+        public ActionResult EditZoogdier(int id)
+        {
+            Zoogdier zoogdier = dr.GetZoogdierById(id);
+            if (zoogdier != null)
+            {
+                return View(zoogdier);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult EditZoogdier(Zoogdier zoogdier)
+        {
+            if (ModelState.IsValid)
+            {
+                dr.UpdateZoogdier(zoogdier);
+                return RedirectToAction("ZoogdierIndex", "Dier");
+            }
+            return View();
+        }
+        public ActionResult DeleteVogel(int id)
+        {
+            Vogel vogel = dr.GetVogelById(id);
+            if (vogel != null)
+            {
+                return View(vogel);
+            }
+            else return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteVogel(int id, Vogel vogel)
+        {
+            try
+            {
+                dr.DeleteVogel(id);
+                return RedirectToAction("VogelIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult DeleteZoogdier(int id)
+        {
+            Zoogdier zoogdier = dr.GetZoogdierById(id);
+            if (zoogdier != null)
+            {
+                return View(zoogdier);
+            }
+            else return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult DeleteZoogdier(int id, Zoogdier zoogdier)
+        {
+            try
+            {
+                dr.DeleteZoogdier(id);
+                return RedirectToAction("ZoogdierIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
