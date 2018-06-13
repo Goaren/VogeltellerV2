@@ -24,6 +24,10 @@ namespace Datalayer.Repositories
         {
             return context.GetAllWaarnemingen();
         }
+        public List<Waarneming> GetAllWaarnemingenBijGebied(int id)
+        {
+            return context.GetAllWaarnemingenBijGebied(id);
+        }
         public Waarneming CreateWaarneming(Waarneming waarneming)
         {
             return context.CreateWaarneming(waarneming);

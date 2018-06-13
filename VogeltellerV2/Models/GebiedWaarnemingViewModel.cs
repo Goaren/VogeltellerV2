@@ -17,7 +17,7 @@ namespace VogeltellerV2.Models
         public GebiedWaarnemingViewModel(int id)
         {
             gebied = gr.GetGebiedById(id);
-            waarnemingen = wr.GetAllWaarnemingen();
+            waarnemingen = wr.GetAllWaarnemingenBijGebied(id);
         }
     }
 }

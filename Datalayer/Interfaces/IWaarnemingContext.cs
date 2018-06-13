@@ -11,6 +11,7 @@ namespace Datalayer.Interfaces
     {
         Waarneming GetWaarnemingById(int id);
         List<Waarneming> GetAllWaarnemingen();
+        List<Waarneming> GetAllWaarnemingenBijGebied(int id);
         Waarneming CreateWaarneming(Waarneming waarneming);
     }
 }

@@ -9,7 +9,7 @@ namespace Datalayer.SQLContext
 {
     class DatabaseConnection
     {
-        private static readonly string connectionString = "Data Source=DUNSPARCE\\SQLEXPRESS;Initial Catalog=VogelTeller;Integrated Security=True";
+        private static readonly string connectionString = "Server=tcp:rozer.database.windows.net,1433;Initial Catalog=VogelTeller;Persist Security Info=False;User ID=Rozer;Password=Henk5924;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public static SqlConnection Connection
         {
