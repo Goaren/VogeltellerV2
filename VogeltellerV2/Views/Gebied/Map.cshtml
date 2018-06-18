@@ -45,7 +45,7 @@
             jsstring += "new google.maps.Marker({" +
                      "position: { lat: " + o.X + ", lng: " + o.Y + " }," +
                          "map: map," +
-                         "title: \"gekke vogel\"" +
+                         "title:" + o.SoortId +
                          "});";
         }
         <script>
@@ -64,6 +64,6 @@
         </script>
     </div>
     <p>
-        @Html.ActionLink("Voeg waarneming toe", "Create", "Waarneming")
+        @Html.ActionLink("Voeg waarneming toe", "DierToevoegenKeuze", "Waarneming")<br />
     </p>
 </div>

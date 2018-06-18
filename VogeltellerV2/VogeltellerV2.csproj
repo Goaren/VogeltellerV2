@@ -219,7 +219,9 @@
     <Content Include="Views\Dier\EditZoogdier.cshtml" />
     <Content Include="Views\Dier\DeleteVogel.cshtml" />
     <Content Include="Views\Dier\DeleteZoogdier.cshtml" />
-    <Content Include="Views\Waarneming\Create.cshtml" />
+    <Content Include="Views\Waarneming\DierToevoegenKeuze.cshtml" />
+    <Content Include="Views\Waarneming\CreateWaarnemingWithVogel.cshtml" />
+    <Content Include="Views\Waarneming\CreateWaarnemingWithZoogdier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

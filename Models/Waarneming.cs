@@ -68,6 +68,17 @@ namespace Models.Models
             this.vogelId = vogelId;
             this.soortId = soortId;
         }
+        public Waarneming(int id, double x, double y, DateTime date, int gebiedId, int accountId, int soortId)
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+            this.id = id;
+            this.x = x;
+            this.y = y;
+            this.date = date;
+            this.gebiedId = gebiedId;
+            this.accountId = accountId;
+            this.soortId = soortId;
+        }
         public Waarneming()
         {
 

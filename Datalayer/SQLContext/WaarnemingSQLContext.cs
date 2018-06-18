@@ -77,12 +77,13 @@ namespace Datalayer.SQLContext
         {
             using (SqlConnection conn = DatabaseConnection.Connection)
             {
-                string query = "INSERT INTO Waarneming (X, Y, GebiedID, AccountID, VogelID, SoortID, ZoogdierId)" +
-                    "VALUES (@x, @y, @gebiedid, @accountid, @vogelid, @soortid, @zoogdierid)";
+                string query = "INSERT INTO Waarneming (X, Y, Date, GebiedID, AccountID, VogelID, SoortID, ZoogdierId)" +
+                    "VALUES (@x, @y, @date, @gebiedid, @accountid, @vogelid, @soortid, @zoogdierid)";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@x", waarneming.X);
                     cmd.Parameters.AddWithValue("@y", waarneming.Y);
+                    cmd.Parameters.AddWithValue("@date", waarneming.Date);
                     cmd.Parameters.AddWithValue("@gebiedid", waarneming.GebiedId);
                     cmd.Parameters.AddWithValue("@accountid", waarneming.AccountId);
                     cmd.Parameters.AddWithValue("@vogelid", waarneming.VogelId);
@@ -104,30 +105,38 @@ namespace Datalayer.SQLContext
         public Waarneming CreateWaarnemingFromReader(SqlDataReader dr)
         {
             Waarneming w;
-            if (Convert.ToString(dr["VogelID"]) == null)
-            {
-                w = new Waarneming(
-                Convert.ToInt32(dr["ID"]),
-                Convert.ToDouble(dr["X"]),
-                Convert.ToDouble(dr["Y"]),
-                Convert.ToDateTime(dr["Date"]),
-                Convert.ToInt32(dr["GebiedID"]),
-                Convert.ToInt32(dr["AccountID"]),
-                Convert.ToInt32(dr["SoortID"]),
-                Convert.ToInt32(dr["ZoogdierID"]));
-            }
-            else
-            {
-                w = new Waarneming(
-                Convert.ToDateTime(dr["Date"]),
-                Convert.ToInt32(dr["ID"]),
-                Convert.ToDouble(dr["X"]),
-                Convert.ToDouble(dr["Y"]),
-                Convert.ToInt32(dr["GebiedID"]),
-                Convert.ToInt32(dr["AccountID"]),
-                Convert.ToInt32(dr["VogelID"]),
-                Convert.ToInt32(dr["SoortID"]));
-            }
+            w = new Waarneming(
+            Convert.ToInt32(dr["ID"]),
+            Convert.ToDouble(dr["X"]),
+            Convert.ToDouble(dr["Y"]),
+            Convert.ToDateTime(dr["Date"]),
+            Convert.ToInt32(dr["GebiedID"]),
+            Convert.ToInt32(dr["AccountID"]),
+            Convert.ToInt32(dr["SoortID"]));
+            //if (Convert.ToString(dr["VogelID"]) == null)
+            //{
+            //    w = new Waarneming(
+            //    Convert.ToInt32(dr["ID"]),
+            //    Convert.ToDouble(dr["X"]),
+            //    Convert.ToDouble(dr["Y"]),
+            //    Convert.ToDateTime(dr["Date"]),
+            //    Convert.ToInt32(dr["GebiedID"]),
+            //    Convert.ToInt32(dr["AccountID"]),
+            //    Convert.ToInt32(dr["SoortID"]),
+            //    Convert.ToInt32(dr["ZoogdierID"]));
+            //}
+            //else
+            //{
+            //    w = new Waarneming(
+            //    Convert.ToDateTime(dr["Date"]),
+            //    Convert.ToInt32(dr["ID"]),
+            //    Convert.ToDouble(dr["X"]),
+            //    Convert.ToDouble(dr["Y"]),
+            //    Convert.ToInt32(dr["GebiedID"]),
+            //    Convert.ToInt32(dr["AccountID"]),
+            //    Convert.ToInt32(dr["VogelID"]),
+            //    Convert.ToInt32(dr["SoortID"]));
+            //}
 
 
             return w;

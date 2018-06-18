@@ -13,17 +13,35 @@ namespace VogeltellerV2.Controllers
     {
         WaarnemingRepository wr = new WaarnemingRepository(new WaarnemingSQLContext());
         // GET: Waarneming
-        public ActionResult Create()
+        public ActionResult DierToevoegenKeuze()
+        {
+            return View();
+        }
+        public ActionResult CreateWaarnemingWithVogel()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Waarneming waarneming)
+        public ActionResult CreateWaarnemingWithVogel(Waarneming waarneming)
         {
             if (ModelState.IsValid)
             {
                 wr.CreateWaarneming(waarneming);
-                return RedirectToAction("Map", "Gebied");
+                return RedirectToAction("GebiedList", "Gebied");
+            }
+            return View();
+        }
+        public ActionResult CreateWaarnemingWithZoogdier()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateWaarnemingWithZoogdier(Waarneming waarneming)
+        {
+            if (ModelState.IsValid)
+            {
+                wr.CreateWaarneming(waarneming);
+                return RedirectToAction("GebiedList", "Gebied");
             }
             return View();
         }
